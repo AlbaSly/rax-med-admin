@@ -1,0 +1,49 @@
+<app-gestion-forms-page-wrapper [title]="'Registrar Usuario'">
+
+    <!-- Form dinámico -->
+    <form (submit)="onSubmit($event);">
+        <ng-container [ngTemplateOutlet]="currentFormTemplate"></ng-container>
+
+        <app-custom-button
+            *ngIf="formStep === lastFormStep"
+            [type]="'submit'"
+            [color]="'style1'"
+            [size]="'full'"
+            [title]="'Registrar'"
+            [extraClasses]="'mx-auto mt-10 animate__animated animate__fadeIn animate__fast'"
+            [disabled]="someInvalidFormGroup()">
+        </app-custom-button>
+    </form>
+</app-gestion-forms-page-wrapper>
+
+<!-- Form Step Buttons -->
+<app-form-step-buttons
+    (prevClick)="prev();" 
+    (nextClick)="next();" 
+    [isFirstFormStep]="isFirstFormStep" 
+    [isLastFormStep]="isLastFormStep">
+</app-form-step-buttons>
+
+<!-- Datos Personales -->
+<ng-template #datosPersonales>
+    <app-datos-personales-form-fieldset
+        [datosPersonalesForm]="datosPersonalesForm"
+        [classes]="formAnimationClass"
+    ></app-datos-personales-form-fieldset>
+</ng-template>
+
+<!-- Selección del rol '-->
+<ng-template #rol>
+    <app-seleccion-tipo-cuenta-form-fieldset
+        [tipoCuentaForm]="seleccionRolForm"
+        [classes]="formAnimationClass"
+    ></app-seleccion-tipo-cuenta-form-fieldset>
+</ng-template>
+
+<!-- Datos Usuario Sistema -->
+<ng-template #credenciales>
+    <app-credenciales-usuario-sistema-form-fieldset
+        [credencialesSistemaForm]="credencialesForm"
+        [classes]="formAnimationClass"
+    ></app-credenciales-usuario-sistema-form-fieldset>
+</ng-template>

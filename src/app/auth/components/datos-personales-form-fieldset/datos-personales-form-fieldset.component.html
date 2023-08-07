@@ -1,0 +1,82 @@
+<fieldset [formGroup]="datosPersonalesForm" 
+        [class]="'animate__animated ' + classes + ' animate__faster bg-white shadow-lg'">
+    <app-custom-title 
+        [type]="'h3'" 
+        [title]="'Datos Personales'" 
+        [darkMode]="false"
+        [classes]="'my-2'">
+    </app-custom-title>
+
+    <div class="h-72 overflow-y-scroll">
+        <app-input-field 
+            type="text"
+            [for]="FCNames.NOMBRE"
+            [name]="FCNames.NOMBRE"
+            [id]="FCNames.NOMBRE"
+            label="Nombres(s)" 
+            placeholder="Nombre(s)"
+            [formControlName]="FCNames.NOMBRE"
+            >
+        </app-input-field>
+
+        <app-input-field 
+            type="text"
+            [for]="FCNames.APELLIDO_PATERNO"
+            [name]="FCNames.APELLIDO_PATERNO"
+            [id]="FCNames.APELLIDO_PATERNO"
+            label="Apellido Paterno" 
+            placeholder="Apellido Paterno"
+            [formControlName]="FCNames.APELLIDO_PATERNO"
+            >
+        </app-input-field>
+
+        <app-input-field 
+            type="text"
+            [for]="FCNames.APELLIDO_MATERNO"
+            [name]="FCNames.APELLIDO_MATERNO"
+            [id]="FCNames.APELLIDO_MATERNO"
+            label="Apellido Materno" 
+            placeholder="Apellido Materno"
+            [formControlName]="FCNames.APELLIDO_MATERNO">
+        </app-input-field>
+
+        <app-date-input-field
+            [for]="FCNames.FECHA_NACIMIENTO"
+            [name]="FCNames.FECHA_NACIMIENTO"
+            [id]="FCNames.FECHA_NACIMIENTO"
+            label="Fecha de Nacimiento"
+            [formControlName]="FCNames.FECHA_NACIMIENTO">
+        </app-date-input-field>
+
+        <app-select-input-field
+            [data]="sexos"
+            [for]="FCNames.SEXO"
+            [name]="FCNames.SEXO"
+            [id]="FCNames.SEXO"
+            label="Sexo"
+            [formControlName]="FCNames.SEXO">
+        </app-select-input-field>
+
+        <app-input-field 
+            [length]="18"
+            type="text"
+            [for]="FCNames.CURP"
+            [name]="FCNames.CURP"
+            [id]="FCNames.CURP"
+            label="CURP" 
+            placeholder="CURP"
+            [formControlName]="FCNames.CURP">
+        </app-input-field>
+
+        <app-input-field 
+            [length]="10"
+            type="text"
+            [for]="FCNames.TELEFONO"
+            [name]="FCNames.TELEFONO"
+            [id]="FCNames.TELEFONO"
+            label="Teléfono" 
+            placeholder="No. Teléfono"
+            [formControlName]="FCNames.TELEFONO">
+        </app-input-field>
+    </div>
+</fieldset>

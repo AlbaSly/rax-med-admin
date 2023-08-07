@@ -1,0 +1,18 @@
+<fieldset [formGroup]="tipoCuentaForm"
+        [class]="'animate__animated ' + classes + ' animate__faster bg-white shadow-lg'">
+    <app-custom-title 
+        [type]="'h3'" 
+        [title]="'Elija el rol'" 
+        [darkMode]="false"
+        [classes]="'my-2'">
+    </app-custom-title>
+
+    <div class="h-72 overflow-y-auto">
+        <app-select-input-field
+        [for]="FCNames.ROL"
+        [name]="FCNames.ROL"
+        [id]="FCNames.ROL"
+        [formControlName]="FCNames.ROL"
+        [data]="roles"></app-select-input-field>
+    </div>
+</fieldset>

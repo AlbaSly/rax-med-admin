@@ -1,0 +1,5 @@
+<div *ngIf="(loaderService.isLoading$ | async)" id="loader" class="animate__animated animate__fadeIn animate__faster min-h-screen absolute -top-full -left-full -right-full -bottom-full bg-gray-200 flex flex-col items-center justify-center">
+    <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+
+    <h2 class="text-center font-semibold text-2xl text-gray-500">Cargando</h2>
+</div>

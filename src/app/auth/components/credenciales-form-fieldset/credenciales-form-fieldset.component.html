@@ -1,0 +1,21 @@
+<fieldset [formGroup]="credencialesForm" 
+        [class]="'animate__animated ' + classes + ' animate__faster bg-white shadow-lg'">
+    <app-custom-title 
+        [type]="'h3'" 
+        [title]="'Credenciales'" 
+        [darkMode]="false"
+        [classes]="'my-2'">
+    </app-custom-title>
+
+    <div class="h-72 overflow-y-scroll">
+        <app-input-field
+            [type]="'email'"
+            [for]="FCNames.EMAIL"
+            [name]="FCNames.EMAIL"
+            [id]="FCNames.EMAIL"
+            label="Correo Electrónico"
+            placeholder="Correo"
+            [formControlName]="FCNames.EMAIL">
+        </app-input-field>
+    </div>
+</fieldset>

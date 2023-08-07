@@ -1,0 +1,12 @@
+<div [class]="'bg-gray-200 hover:bg-white mx-auto p-4 w-56 h-48 rounded-md shadow-md hover:shadow-2xl cursor-pointer flex flex-col justify-between'+' '+classes">
+    <h3 class="text-gray-500 font-semibold text-center text-xl">{{accionTitulo}}</h3>
+
+    <app-custom-button
+        (click)="onClick();"
+        [type]="'button'"
+        [color]="'new'"
+        [size]="'auto'"
+        [extraClasses]="'mx-auto mt-2.5 w-full'"
+        [title]="botonTitulo">
+    </app-custom-button>
+</div>

@@ -1,0 +1,109 @@
+<div *ngIf="!loading" class="animate__animated animate__fadeIn animate__fast p-2 px-8 bg-white rounded-md shadow-md my-8">
+    <app-custom-title
+        [type]="'h2'"
+        [darkMode]="false"
+        [title]="APIUtils.getFullName(info.usuario.persona)"
+        [classes]="'text-gray-600'">
+    </app-custom-title>
+
+    <!-- <div class="flex items-center justify-center gap-x-8 font-medium">
+        <p class="text-gray-500">Clave Usuario: <span class="text-primaryDarker">{{FormatUtils.formatWithZeros(usuario!.idUsuario, 5)}}</span></p>
+        <p class="text-gray-500">Clave Persona: <span class="text-primaryDarker">{{FormatUtils.formatWithZeros(usuario!.persona.idPersona, 5)}}</span></p>
+    </div> -->
+
+    <app-line-breaker></app-line-breaker>
+
+    <section class="">
+        <div class="md:flex items-center justify-center gap-x-8">
+            <app-custom-title
+                [type]="'h3'"
+                [darkMode]="false"
+                title="Información Personal"
+                [classes]="'text-gray-500 text-left'">
+            </app-custom-title>
+            <app-custom-button
+                [type]="'button'"
+                [color]="'edit'"
+                [title]="'Editar'"
+                [size]="'auto'"
+                [extraClasses]="'w-full md:w-auto p-1'">
+            </app-custom-button>
+        </div>
+
+        <dl class="my-4 flex flex-wrap gap-x-8">
+            <app-dt-dd title="Nombre" [description]="info.usuario.persona.nombre"></app-dt-dd>
+            <app-dt-dd title="Apellido Paterno" [description]="info.usuario.persona.apellidoPaterno"></app-dt-dd>
+            <app-dt-dd title="Apellido Materno" [description]="info.usuario.persona.apellidoMaterno!"></app-dt-dd>
+            <app-dt-dd title="Sexo" [description]="info.usuario.persona.sexo | genero"></app-dt-dd>
+            <app-dt-dd title="Fecha de Nacimiento" [description]="info.usuario.persona.fechaNacimiento | date:'longDate'"></app-dt-dd>
+            <app-dt-dd title="CURP" [description]="info.usuario.persona.curp"></app-dt-dd>
+            <app-dt-dd title="Teléfono" [description]="info.usuario.persona.telefono"></app-dt-dd>
+            <app-dt-dd title="Estado" [description]="info.usuario.persona.activo | estado"></app-dt-dd>
+        </dl>
+
+    </section>
+
+    <app-line-breaker></app-line-breaker>
+
+    <section class="">
+        <div class="md:flex items-center justify-center gap-x-8 gap-y-6">
+            <app-custom-title
+                [type]="'h3'"
+                [darkMode]="false"
+                title="Información del Usuario"
+                [classes]="'text-gray-500 text-left'">
+            </app-custom-title>
+            <app-custom-button
+                [type]="'button'"
+                [color]="'edit'"
+                [title]="'Editar'"
+                [size]="'auto'"
+                [extraClasses]="'w-full md:w-auto p-1'">
+            </app-custom-button>
+        </div>
+
+        <div class="my-4 flex flex-wrap gap-x-8 gap-y-6">
+            <app-dt-dd title="Correo Electrónico" [description]="info.usuario.email"></app-dt-dd>
+            <!-- <app-dt-dd title="Fecha de Creación" [description]="usuario.fechaCreacion | date:'longDate'"></app-dt-dd>
+            <app-dt-dd title="Última Modificación" [description]="(usuariofechaModificacion | date:'longDate') ?? 'Vacío'"></app-dt-dd> -->
+            <app-dt-dd title="Rol" [description]="info.usuario.rol.nombre"></app-dt-dd>
+            <app-dt-dd title="Estado de la Cuenta" [description]="info.usuario.activo | estado"></app-dt-dd>
+        </div>
+    </section>
+
+    <app-line-breaker></app-line-breaker>
+
+    <section class="">
+        <app-custom-title
+            [type]="'h3'"
+            [darkMode]="false"
+            title="Acciones"
+            [classes]="'text-gray-500 text-left'">
+        </app-custom-title>
+
+        <div class="my-4 flex flex-col gap-y-4 md:justify-center">
+            <app-custom-button
+                [type]="'button'"
+                [color]="'style1'"
+                [title]="'Volver a Activar'"
+                [size]="'full'"
+                [extraClasses]="'p-2 md:mx-auto'">
+            </app-custom-button>
+            <app-custom-button
+                [type]="'button'"
+                [color]="'style1'"
+                [title]="'Recuperar Cuenta'"
+                [size]="'full'"
+                [extraClasses]="'p-2 md:mx-auto'">
+            </app-custom-button>
+            <app-custom-button
+                [type]="'button'"
+                [color]="'delete'"
+                [title]="'Desactivar Totalmente'"
+                [size]="'full'"
+                [extraClasses]="'p-2 md:mx-auto'">
+            </app-custom-button>
+        </div>
+
+    </section>
+</div>

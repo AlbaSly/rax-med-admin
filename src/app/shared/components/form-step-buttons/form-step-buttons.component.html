@@ -1,0 +1,19 @@
+<!-- Botones para manejar los forms -->
+<div class="animate__animated animate__fadeIn animate__fast my-10 mx-auto w-1/2 flex justify-evenly">
+    <app-custom-button
+        (click)="onPrevClick();"
+        [type]="'button'"
+        [color]="'pagination'"
+        [size]="'auto'"
+        [title]="'Anterior'"
+        [disabled]="isFirstFormStep"
+    ></app-custom-button>
+    <app-custom-button
+        (click)="onNextClick();"
+        [type]="'button'"
+        [color]="'pagination'"
+        [size]="'auto'"
+        [title]="'Siguiente'"
+        [disabled]="isLastFormStep"
+    ></app-custom-button>
+</div>

@@ -1,0 +1,32 @@
+<app-custom-title
+    [title]="'Recuperar Cuenta'"
+    [darkMode]="true"
+    [classes]="'animate__animated animate__fadeIn'">
+</app-custom-title>
+
+<app-form-wrapper>
+    <form [formGroup]="recuperarForm">
+        <app-input-field
+            type="email"
+            [for]="FCNames.EMAIL"
+            [name]="FCNames.EMAIL"
+            [id]="FCNames.EMAIL"
+            label="Ingrese su Correo Electrónico"
+            placeholder="Correo"
+            [formControlName]="FCNames.EMAIL">
+        </app-input-field>
+
+        <div class="my-2.5 flex flex-col">
+            <a [routerLink]="AppRoutes.AuthRoutePaths.login" class="text-center font-medium text-gray-500 hover:text-red-400">Regresar</a>
+        </div>
+
+        <app-custom-button
+            [type]="'submit'"
+            [color]="'style1'"
+            [size]="'full'"
+            [disabled]="!recuperarForm.valid"
+            [extraClasses]="'mx-auto mt-5'"
+            [title]="'Acceder'">
+        </app-custom-button>
+    </form>
+</app-form-wrapper>

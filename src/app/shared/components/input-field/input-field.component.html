@@ -1,0 +1,18 @@
+<div class="mt-2.5 flex flex-col p-4">
+    <label [for]="for" class="text-lg font-semibold text-gray-600 mb-1.5">{{label}}</label>
+    <input 
+        [min]="1"
+        [minLength]="1"
+        [maxLength]="length ? length : 70"
+        [type]="type"
+        [placeholder]="placeholder"
+        [name]="name"
+        [disabled]="disabled"
+        (input)="updateValue($event);"
+        (blur)="onTouched();"
+        class="px-2 py-4 bg-gray-200 placeholder:font-normal text-primary font-semibold focus:bg-gray-300 outline-none"
+        [value]="value"
+        toUppercase
+        inputRef
+    />
+</div>

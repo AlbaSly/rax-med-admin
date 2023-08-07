@@ -1,0 +1,42 @@
+<app-custom-title 
+    [title]="'Acceder'" 
+    [darkMode]="true" 
+    [classes]="'animate__animated animate__fadeIn'">
+</app-custom-title>
+
+<app-form-wrapper>
+    <form (submit)="onSubmit($event);" [formGroup]="loginForm">
+        <app-input-field
+            [type]="'email'"
+            [for]="FCNames.EMAIL"
+            [name]="FCNames.EMAIL"
+            [id]="FCNames.EMAIL"
+            label="Correo Electrónico"
+            placeholder="Correo"
+            [formControlName]="FCNames.EMAIL">
+        </app-input-field>
+        <app-input-field
+            [type]="'password'"
+            [for]="FCNames.PASSWORD"
+            [name]="FCNames.PASSWORD"
+            [id]="FCNames.PASSWORD"
+            label="Contraseña"
+            placeholder="Contraseña"
+            [formControlName]="FCNames.PASSWORD">
+        </app-input-field>
+
+        <div class="my-2.5 flex flex-col">
+            <a [routerLink]="AppRoutes.AuthRoutePaths.crearCuenta" class="text-center font-medium text-gray-500 hover:text-red-400">Crear Cuenta</a>
+            <a [routerLink]="AppRoutes.AuthRoutePaths.recuperarCuenta" class="text-center font-medium text-gray-500 hover:text-red-400">¿Contraseña Olvidada?</a>
+        </div>
+
+        <app-custom-button
+            [type]="'submit'"
+            [color]="'style1'"
+            [size]="'full'"
+            [disabled]="!loginForm.valid"
+            [extraClasses]="'mx-auto mt-5'"
+            [title]="'Acceder'">
+        </app-custom-button>
+    </form>
+</app-form-wrapper>

@@ -1,0 +1,23 @@
+<div class="flex flex-wrap gap-4 mx-auto my-10 justify-center overflow-hidden" #cardsContainer>
+
+    <app-accion-card 
+        (buttonClick)="navigateTo(Routes.GestionRoutePaths.registrarUsuario);" 
+        [accionTitulo]="'Registrar Usuario'" 
+        [botonTitulo]="'Continuar'"
+        [classes]="'animate__animated animate__fadeInLeft animate__faster'">
+    </app-accion-card>
+
+    <app-accion-card 
+        (buttonClick)="navigateTo(Routes.GestionRoutePaths.registrarEspecialidad);" 
+        [accionTitulo]="'Registrar Especialidad'" 
+        [botonTitulo]="'Continuar'"
+        [classes]="'animate__animated animate__fadeInRight animate__faster'">
+    </app-accion-card>
+
+    <app-accion-card 
+        (buttonClick)="navigateTo(Routes.GestionRoutePaths.registrarConsultorio);" 
+        [accionTitulo]="'Registrar Consultorio'" 
+        [botonTitulo]="'Continuar'"
+        [classes]="'animate__animated animate__fadeInLeft animate__faster'">
+    </app-accion-card>
+</div>

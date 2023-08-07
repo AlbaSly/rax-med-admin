@@ -1,0 +1,53 @@
+<app-custom-title 
+    [type]="'h1'" 
+    title="Crear Cuenta" 
+    [darkMode]="true" 
+    [classes]="'animate__animated animate__fadeIn animate__slow'">
+</app-custom-title>
+
+<!-- Contenedor de Form -->
+<app-form-wrapper>
+    <!-- Contenido dinámico -->
+    <form (submit)="onSubmit($event);" class="overflow-x-hidden">
+        <!-- Form Fieldset Dinámico -->
+        <ng-container [ngTemplateOutlet]="currentFormTemplate"></ng-container>
+
+        <div class="my-2.5 flex flex-col">
+            <a [routerLink]="AppRoutes.AuthRoutePaths.login" class="text-center font-medium text-gray-500 hover:text-red-400">Regresar</a>
+        </div>
+
+        <!-- Submit Button -->
+        <app-custom-button
+            *ngIf="formStep === lastFormStep"
+            [type]="'submit'"
+            [color]="'style1'"
+            [size]="'full'"
+            [title]="'Registrar'"
+            [extraClasses]="'mx-auto mt-10 animate__animated animate__fadeIn animate__fast'"
+            [disabled]="someInvalidFormGroup()">
+        </app-custom-button>
+    </form>
+</app-form-wrapper>
+
+<!-- Form Step buttons group -->
+<app-form-step-buttons
+    (prevClick)="prev();"
+    (nextClick)="next();"
+    [isFirstFormStep]="isFirstFormStep"
+    [isLastFormStep]="isLastFormStep">
+</app-form-step-buttons>
+
+<!-- Datos Personales Form Fieldset -->
+<ng-template #datosPersonales>
+    <app-datos-personales-form-fieldset
+       [datosPersonalesForm]="datosPersonalesForm"
+       [classes]="formAnimationClass">
+    </app-datos-personales-form-fieldset>
+</ng-template>
+
+<ng-template #credenciales>
+    <app-credenciales-form-fieldset
+        [credencialesForm]="credencialesForm"
+        [classes]="formAnimationClass">
+    </app-credenciales-form-fieldset>
+</ng-template>

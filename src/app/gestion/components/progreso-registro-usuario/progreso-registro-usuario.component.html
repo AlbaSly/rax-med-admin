@@ -1,0 +1,13 @@
+<!-- Progress -->
+<div class="flex flex-col md:flex-row items-center md:items-baseline justify-between my-2.5">
+    <p [class]="(formStep === 1 ? 'font-semibold text-red-500 underline' : 'font-semibold')">Datos Personales</p>
+    <p [class]="(formStep === 2 ? 'font-semibold text-red-500 underline' : 'font-semibold')">Tipo de Cuenta</p>
+
+    <p *ngIf="!tipoCuentaForm.controls[FCNames.TIPO_CUENTA].value || tipoCuentaForm.controls[FCNames.TIPO_CUENTA].value === 'null'" 
+        class="font-semibold text-gray-400">Esperando...</p>
+
+    <p *ngIf="tipoCuentaForm.controls[FCNames.TIPO_CUENTA].value && tipoCuentaForm.controls[FCNames.TIPO_CUENTA].value !== 'null'"
+        [class]="formStep === 3 ? 'font-semibold text-red-500 underline': 'font-semibold'">Datos del Rol</p>
+
+    <p [class]="(formStep === 4 ? 'font-semibold text-red-500 underline' : 'font-semibold')">Datos del Usuario</p>
+</div>

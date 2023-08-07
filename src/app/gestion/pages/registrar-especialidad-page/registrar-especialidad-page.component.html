@@ -1,0 +1,53 @@
+<app-gestion-forms-page-wrapper title="Registrar Nueva Especialidad">
+    <form (submit)="onSubmit($event);">
+
+        <fieldset [formGroup]="registrarEspecialidadForm" [class]="'animate__animated animate__fadeIn animate__faster bg-white shadow-lg'">
+            <app-custom-title 
+                [type]="'h3'" 
+                [title]="'Datos de la Especialidad'" 
+                [darkMode]="false"
+                [classes]="'my-2'">
+            </app-custom-title>
+
+            <div class="h-72 overflow-y-scroll">
+                <app-input-field 
+                    type="text"
+                    [for]="FCNames.NOMBRE"
+                    [name]="FCNames.NOMBRE"
+                    [id]="FCNames.NOMBRE"
+                    label="Nombre" 
+                    placeholder="Nombre"
+                    [formControlName]="FCNames.NOMBRE">
+                </app-input-field>
+
+                <app-textarea-field
+                    [for]="FCNames.DESCRIPCION"
+                    [name]="FCNames.DESCRIPCION"
+                    [id]="FCNames.DESCRIPCION"
+                    label="Descripción"
+                    placeholder="Descripción de la especialidad"
+                    [formControlName]="FCNames.DESCRIPCION">
+                </app-textarea-field>
+
+                <app-input-field
+                    type="number"
+                    [for]="FCNames.DURACION_SESION"
+                    [name]="FCNames.DURACION_SESION"
+                    [id]="FCNames.DURACION_SESION"
+                    label="Duración de la sesión (minutos)"
+                    placeholder="Duración (min)"
+                    [formControlName]="FCNames.DURACION_SESION">
+                </app-input-field>
+            </div>
+        </fieldset>
+
+        <app-custom-button
+            [disabled]="!registrarEspecialidadForm.valid"
+            [type]="'submit'"
+            [color]="'style1'"
+            [size]="'full'"
+            [title]="'Registrar'"
+            [extraClasses]="'mx-auto mt-10 animate__animated animate__fadeIn animate__fast'">
+        </app-custom-button>
+    </form>
+</app-gestion-forms-page-wrapper>

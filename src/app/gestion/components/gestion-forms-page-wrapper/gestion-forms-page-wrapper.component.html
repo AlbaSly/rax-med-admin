@@ -1,0 +1,13 @@
+<a routerLink="'/inicio'" class="text-secondaryDarker hover:text-secondaryDarker2 underline font-semibold text-2xl">Regresar</a>
+
+<app-custom-title 
+    [type]="'h1'" 
+    [title]="title" 
+    [darkMode]="true" 
+    [classes]="'animate__animated animate__fadeIn animate__slow'">
+</app-custom-title>
+
+<!-- Form -->
+<div id="form-wrapper" class="animate__animated animate__fadeInLeft animate__faster p-4 my-5 bg-gray-200 shadow-lg overflow-x-hidden">
+    <ng-content></ng-content>
+</div>

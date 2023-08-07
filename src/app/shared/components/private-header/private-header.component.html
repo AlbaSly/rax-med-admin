@@ -1,0 +1,20 @@
+<header class="p-4 md:py-8 bg-secondaryDarker w-full flex justify-between items-center">
+    <div class="text-center md:text-left cursor-pointer" (click)="navigateToMain()">
+        <p class="text-4xl text-gray-200 font-bold leading-normal">RaxMed<span class="text-yellow-400 underline">Admin</span></p>
+    </div>
+    <!-- Navbar -->
+    <nav class="">
+        <ul class="flex flex-col justify-center gap-8 lg:gap-0 lg:flex-row lg:justify-evenly fixed lg:relative top-0 bottom-0 left-0 bg-secondaryDarker lg:bg-transparent z-50 shadow-xl lg:shadow-none  animate__animated animate__faster" [ngClass]="{'hidden': hideMenu}" [class]="currentAnimationClass">
+            <li class="list-none">
+                <a [routerLink]="'/usuarios'" class="px-6 py-4 text-lg font-semibold text-white hover:bg-secondaryDarker2 block lg:inline-block">Usuarios</a>
+            </li>
+            <li class="list-none">
+                <a [routerLink]="'/especialidades'" class="px-6 py-4 text-lg font-semibold text-white hover:bg-secondaryDarker2 block lg:inline-block">Especialidades</a>
+            </li>
+            <li class="list-none">
+                <a [routerLink]="'/consultorios'" class="px-6 py-4 text-lg font-semibold text-white hover:bg-secondaryDarker2 block lg:inline-block">Consultorios</a>
+            </li>
+        </ul>
+        <i class="uil uil-bars text-white hover:text-secondaryDarker2 text-4xl block lg:hidden cursor-pointer" (click)="handleResponsiveMenu();"></i> 
+    </nav>
+</header>

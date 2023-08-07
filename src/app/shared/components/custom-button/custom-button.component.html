@@ -1,0 +1,16 @@
+<input *ngIf="type === 'submit'"
+    [disabled]="disabled"
+    type="submit"
+    [value]="title"
+    class="p-4 block select-none text-white font-semibold"
+    [class]="widthClasses + ' ' + extraClasses + ' ' +(disabled ? 'cursor-not-allowed bg-gray-400' : 'cursor-pointer shadow-md hover:shadow-lg' + ' ' + colorClasses)"
+/>
+
+<button *ngIf="type === 'button'"
+    [disabled]="disabled"
+    type="submit"
+    class="p-4 block select-none text-white font-semibold"
+    [class]="widthClasses + ' ' + extraClasses + ' ' +(disabled ? 'cursor-not-allowed bg-gray-400' : 'cursor-pointer shadow-md hover:shadow-lg' + ' ' + colorClasses)"
+>
+{{title}}
+</button>

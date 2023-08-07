@@ -1,0 +1,17 @@
+<div class="min-h-screen bg-gray-800">
+    <main class="container min-h-screen mx-auto flex items-center justify-center">
+        <div class="animate__animated animate__fadeIn">
+            <h1 class="animate__animated animate__fadeInLeft animate__faster text-8xl text-center font-bold text-red-500">404</h1>
+            <p class="animate__animated animate__fadeInLeft animate__fast text-4xl text-center font-semibold text-white">Recurso no encontrado</p>
+        
+            <app-custom-button
+                (click)="back();"
+                [type]="'button'"
+                [color]="'style1'"
+                [size]="'full'"
+                [extraClasses]="'animate__animated animate__fadeIn animate__slower mt-10 mx-auto'"
+                [title]="'Regresar'">
+            </app-custom-button>
+        </div>
+    </main>
+</div>

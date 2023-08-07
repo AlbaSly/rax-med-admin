@@ -1,0 +1,43 @@
+<app-gestion-forms-page-wrapper title="Registrar Nuevo Consultorio">
+    <form (submit)="onSubmit($event);">
+
+        <fieldset [formGroup]="registrarConsultorioForm" [class]="'animate__animated animate__fadeIn animate__faster bg-white shadow-lg'">
+            <app-custom-title 
+                [type]="'h3'" 
+                [title]="'Datos del Consultorio'" 
+                [darkMode]="false"
+                [classes]="'my-2'">
+            </app-custom-title>
+
+            <div class="h-72 overflow-y-scroll">
+                <app-input-field 
+                    type="text"
+                    [for]="FCNames.NOMBRE"
+                    [name]="FCNames.NOMBRE"
+                    [id]="FCNames.NOMBRE"
+                    label="Nombre" 
+                    placeholder="Nombre"
+                    [formControlName]="FCNames.NOMBRE">
+                </app-input-field>
+
+                <app-textarea-field
+                    [for]="FCNames.NOTAS"
+                    [name]="FCNames.NOTAS"
+                    [id]="FCNames.NOTAS"
+                    label="Notas adicionales"
+                    placeholder="Notas"
+                    [formControlName]="FCNames.NOTAS">
+                </app-textarea-field>
+            </div>
+        </fieldset>
+
+        <app-custom-button
+            [disabled]="!registrarConsultorioForm.valid"
+            [type]="'submit'"
+            [color]="'style1'"
+            [size]="'full'"
+            [title]="'Registrar'"
+            [extraClasses]="'mx-auto mt-10 animate__animated animate__fadeIn animate__fast'">
+        </app-custom-button>
+    </form>
+</app-gestion-forms-page-wrapper>

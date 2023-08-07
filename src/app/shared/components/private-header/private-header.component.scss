@@ -1,0 +1,22 @@
+* {
+    user-select: none;
+}
+
+#menu-catalogos {
+    display: none;
+    position: absolute;
+    z-index: 100;
+
+    > li:hover {
+        cursor: pointer;
+    }
+}
+
+#li-catalogos {
+
+    &:hover {
+        #menu-catalogos {
+            display: block;
+        }
+    }
+}

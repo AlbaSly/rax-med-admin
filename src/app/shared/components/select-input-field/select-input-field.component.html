@@ -1,0 +1,12 @@
+<div class="mt-2.5 flex flex-col p-4">
+    <label [for]="for" class="text-lg font-semibold text-gray-600 mb-1.5">{{label}}</label>
+    <select 
+        [name]="name"
+        [disabled]="disabled"
+        (input)="updateValue($event);"
+        (blur)="onTouched();"
+        class="px-2 py-4 bg-gray-200 placeholder:font-normal text-primary font-semibold focus:bg-gray-300 outline-none"
+        [value]="value">
+        <option *ngFor="let item of data" [value]="item.value" [selected]="(item.value === value ? true : false)">{{item.title}}</option>
+    </select>
+</div>
