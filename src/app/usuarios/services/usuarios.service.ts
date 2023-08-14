@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IResolveResponse, IUsuarios, InfoUsuario } from 'src/app/shared/interfaces';
@@ -13,10 +13,11 @@ export class UsuariosService {
     private readonly http: HttpClient,
   ) { }
 
-  catalogo(): Observable<IResolveResponse<IUsuarios[]>> {
+  catalogo(busqueda?: string): Observable<IResolveResponse<IUsuarios[]>> {
     const url: string = `${this.PATH}/catalogo`;
 
-    return this.http.get<IResolveResponse<IUsuarios[]>>(url);
+    const queryParams = new HttpParams().append('busqueda', busqueda ?? "");
+    return this.http.get<IResolveResponse<IUsuarios[]>>(url, {params: queryParams});
   }
 
   info(id: string): Observable<IResolveResponse<InfoUsuario>> {

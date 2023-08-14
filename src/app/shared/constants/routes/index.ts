@@ -57,11 +57,15 @@ export namespace AppRoutes {
     /**MEDICOS */
     export const MedicosModulePaths = {
         index: 'medicos',
-        ver: 'ver/:id'
+        ver: 'ver/:id',
+        editar: "editar/:id",
+        gestionarEspecialidades: "gestionar-especialidades/:id",
     }
     export const MedicosRoutePaths = {
         index: br(MedicosModulePaths.index),
         ver: br(MedicosModulePaths.index, MedicosModulePaths.ver),
+        editar: br(MedicosModulePaths.index, MedicosModulePaths.editar),
+        gestionarEspecialidades: br(MedicosModulePaths.index, MedicosModulePaths.gestionarEspecialidades),
     }
 
     /**PACIENTES */

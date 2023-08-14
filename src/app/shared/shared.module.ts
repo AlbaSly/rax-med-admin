@@ -24,6 +24,9 @@ import { EstadoPipe, GeneroPipe } from './pipes';
 import { DtDdComponent } from './components/dt-dd/dt-dd.component';
 import { LineBreakerComponent } from './components/line-breaker/line-breaker.component';
 import { LoadingScreenComponent } from './components/loading-screen/loading-screen.component';
+import { DebounceSearchComponent } from './components/debounce-search/debounce-search.component';
+import { EstadoComponent } from './components/estado/estado.component';
+import { NullableDataPipe } from './pipes/nullable-data.pipe';
 
 
 @NgModule({
@@ -53,6 +56,9 @@ import { LoadingScreenComponent } from './components/loading-screen/loading-scre
     DtDdComponent,
     LineBreakerComponent,
     LoadingScreenComponent,
+    DebounceSearchComponent,
+    EstadoComponent,
+    NullableDataPipe,
   ],
   imports: [
     CommonModule,
@@ -74,9 +80,12 @@ import { LoadingScreenComponent } from './components/loading-screen/loading-scre
     AlertComponent,
     GeneroPipe,
     EstadoPipe,
+    NullableDataPipe,
     DtDdComponent,
     LineBreakerComponent,
     LoadingScreenComponent,
+    DebounceSearchComponent,
+    EstadoComponent
   ]
 })
 export class SharedModule { }

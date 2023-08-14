@@ -2,7 +2,10 @@
     <!-- <p class="font-semibold text-gray-500">Persona <span class="text-primaryDarker">{{FormatUtils.formatWithZeros(2, 5)}}</span></p> -->
     <!-- <p class="font-semibold text-gray-500">ID: <span class="text-primaryDarker">{{consultorio._id}}</span></p> -->
     <div class="md:flex items-center justify-between">
-        <dt class="font-medium text-gray-700">{{consultorio.nombre}}</dt>
+        <div>
+            <dt class="font-medium text-gray-700">{{consultorio.nombre}} <app-estado [estado]="consultorio.activo"></app-estado></dt>
+            <dd class="font-medium text-gray-500">{{consultorio.notas}}</dd>
+        </div>
         <app-custom-button
             (click)="verInfo();"
             [type]="'button'"

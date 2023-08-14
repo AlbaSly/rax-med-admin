@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError } from 'rxjs';
-import { APIHandlers } from 'src/app/shared/handlers';
 import { IResolveResponse, IRoles } from 'src/app/shared/interfaces';
 
 @Injectable({

@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppRoutes } from '../../constants/routes';
 
@@ -7,16 +7,23 @@ import { AppRoutes } from '../../constants/routes';
   templateUrl: './private-header.component.html',
   styleUrls: ['./private-header.component.scss']
 })
-export class PrivateHeaderComponent {
+export class PrivateHeaderComponent implements OnInit {
 
   AppRoutes = AppRoutes;
 
-  hideMenu: boolean = false;
+  hideMenu: boolean = true;
   currentAnimationClass: string = "animate__fadeInLeft";
 
   constructor(
     private _router: Router,
   ) {}
+
+  ngOnInit(): void {
+    const width: number = window.innerWidth;
+    if (width >= 1024) {
+      this.hideMenu = false;
+    }
+  }
 
   @HostListener('window:resize', ['$event'])
   onWindowResize(event: Event) {

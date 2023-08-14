@@ -15,4 +15,6 @@ export enum EFormControlNames {
     NOTAS = "notas",
     DESCRIPCION = "descripcion",
     DURACION_SESION = "duracionPorSesion",
+    HORA_ENTRADA = "horaEntrada",
+    HORA_SALIDA = "horaSalida",
 }

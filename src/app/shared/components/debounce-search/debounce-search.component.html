@@ -1,0 +1,15 @@
+<div class="flex justify-between gap-2">
+    <input
+        id="busqueda"
+        name="busqueda" 
+        type="text" 
+        placeholder="Búsqueda por nombre" 
+        class="flex-grow px-2 font-medium text-primaryDarker outline-none" 
+        #inputBusqueda>
+    <app-custom-button
+        (click)="limpiarBusqueda();"
+        [type]="'button'"
+        [color]="'style2'"
+        [title]="'Limpiar Búsqueda'">
+    </app-custom-button>
+</div>

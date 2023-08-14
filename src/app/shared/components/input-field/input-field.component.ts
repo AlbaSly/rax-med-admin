@@ -68,4 +68,4 @@ export class InputFieldComponent implements OnInit, ControlValueAccessor {
   private onTouchedFn: any = () => {};
 }
 
-type InputType = "text" | "email" | "tel" | "password" | "number";
+type InputType = "text" | "email" | "tel" | "password" | "number" | "time";

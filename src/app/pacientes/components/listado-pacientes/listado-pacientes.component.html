@@ -1,1 +1,7 @@
-<p>listado-pacientes works!</p>
+<div class="animate__animated animate__fadeInUp animate__faster bg-gray-200 p-4 shadow-md gap-4">
+    <app-debounce-search (search)="busqueda($event)"></app-debounce-search>
+
+    <div class="w-full h-full overflow-y-scroll my-2">
+        <app-paciente-info-card *ngFor="let paciente of listadoPacientes" [paciente]="paciente"></app-paciente-info-card>
+    </div>
+</div>

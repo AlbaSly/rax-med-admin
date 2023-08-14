@@ -5,15 +5,15 @@ import { Injectable } from '@angular/core';
 })
 export class UIService {
 
-  private _loading: boolean = true
+  private _appTitle: string = "Default";
 
-  constructor() { }
+  constructor() {}
 
-  get loading(): boolean {
-    return this._loading;
+  set setAppTitle(value: string) {
+    this._appTitle = value;
   }
 
-  set loading(value: boolean) {
-    this._loading = value;
+  get getAppTitle(): string {
+    return this._appTitle;
   }
 }

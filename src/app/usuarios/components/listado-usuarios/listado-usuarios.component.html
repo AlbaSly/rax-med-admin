@@ -1,19 +1,5 @@
 <div class="animate__animated animate__fadeInUp animate__faster bg-gray-200 p-4 shadow-md gap-4">
-    <div class="flex justify-between gap-2">
-        <input
-            id="busqueda"
-            name="busqueda" 
-            type="text" 
-            placeholder="Búsqueda por nombre" 
-            class="flex-grow px-2 font-medium text-primaryDarker outline-none" 
-            #inputBusqueda>
-        <app-custom-button
-            (click)="limpiarBusqueda();"
-            [type]="'button'"
-            [color]="'style2'"
-            [title]="'Limpiar Búsqueda'">
-        </app-custom-button>
-    </div>
+    <app-debounce-search (search)="busqueda($event)"></app-debounce-search>
 
     <div class="w-full h-full overflow-y-scroll my-2">
         <app-usuario-info-card *ngFor="let usuario of listadoUsuarios" [usuario]="usuario"></app-usuario-info-card>

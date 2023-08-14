@@ -1,7 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError } from 'rxjs';
-import { APIHandlers } from 'src/app/shared/handlers';
 import { IPacientes, IResolveResponse } from 'src/app/shared/interfaces';
 
 @Injectable({
@@ -18,5 +17,18 @@ export class PacientesService {
     const url: string = `${this.PATH}/crear/${idPersona}`;
 
     return this.http.post<IResolveResponse<IPacientes>>(url, {});
+  }
+
+  catalogo(busqueda?: string): Observable<IResolveResponse<IPacientes[]>> {
+    const url: string = `${this.PATH}/catalogo`;
+
+    const queryParams = new HttpParams().append('busqueda', busqueda ?? "");
+    return this.http.get<IResolveResponse<IPacientes[]>>(url, {params: queryParams});
+  }
+
+  info(id: string): Observable<IResolveResponse<IPacientes>> {
+    const url: string = `${this.PATH}/info/${id}`;
+
+    return this.http.get<IResolveResponse<IPacientes>>(url);
   }
 }

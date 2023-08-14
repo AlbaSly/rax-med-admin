@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ICrearEspecialidad, IEspecialidades, IResolveResponse } from 'src/app/shared/interfaces';
@@ -19,9 +19,10 @@ export class EspecialidadesService {
     return this.http.post<IResolveResponse<null>>(url, data);
   }
 
-  catalogo(): Observable<IResolveResponse<IEspecialidades[]>> {
+  catalogo(busqueda?: string): Observable<IResolveResponse<IEspecialidades[]>> {
     const url: string = `${this.PATH}/catalogo`;
 
-    return this.http.get<IResolveResponse<IEspecialidades[]>>(url);
+    const queryParams = new HttpParams().append('busqueda', busqueda ?? "");
+    return this.http.get<IResolveResponse<IEspecialidades[]>>(url, {params: queryParams});
   }
 }

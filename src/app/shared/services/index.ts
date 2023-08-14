@@ -1,3 +1,4 @@
 export * from "./alert.service";
-export * from "./usuarios.service";
 export * from "./ui.service";
+export * from "./loader.service";
+export * from "./perfil.service";

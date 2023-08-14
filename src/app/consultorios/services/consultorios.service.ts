@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IConsultorios, ICrearConsultorio, IResolveResponse } from 'src/app/shared/interfaces';
@@ -19,9 +19,10 @@ export class ConsultoriosService {
     return this.http.post<IResolveResponse<null>>(url, data);
   }
 
-  catalogo(): Observable<IResolveResponse<IConsultorios[]>> {
+  catalogo(busqueda?: string): Observable<IResolveResponse<IConsultorios[]>> {
     const url: string = `${this.PATH}/catalogo`;
 
-    return this.http.get<IResolveResponse<IConsultorios[]>>(url);
+    const queryParams = new HttpParams().append('busqueda', busqueda ?? "");
+    return this.http.get<IResolveResponse<IConsultorios[]>>(url, {params: queryParams});
   }
 }

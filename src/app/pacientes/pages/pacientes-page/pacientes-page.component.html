@@ -1,0 +1,10 @@
+<a routerLink="/inicio" class="text-secondaryDarker hover:text-secondaryDarker2 underline font-semibold text-2xl">Regresar</a>
+
+<app-custom-title 
+    [type]="'h1'" 
+    [title]="'Listado de Pacientes'" 
+    [darkMode]="true" 
+    [classes]="'animate__animated animate__fadeIn animate__slow'">
+</app-custom-title>
+
+<app-listado-pacientes [listadoPacientes]="pacientes"></app-listado-pacientes>

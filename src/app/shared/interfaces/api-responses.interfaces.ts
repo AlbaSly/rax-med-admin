@@ -58,3 +58,8 @@ export interface IConsultorios extends MongoDocument {
     notas: string,
     activo: boolean,
 }
+
+export interface IMedicosEspecialidades extends MongoDocument {
+    medico: IMedicos | number;
+    especialidad: IEspecialidades;
+}

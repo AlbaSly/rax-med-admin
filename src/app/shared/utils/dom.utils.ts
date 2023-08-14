@@ -4,6 +4,12 @@ export namespace DOMUtils {
   
     $html.scrollTop = $html.scrollHeight;
   }
+
+  export function scrollToTop(): void {
+    const $html = document.querySelector('html') as HTMLHtmlElement;
+
+    $html.scrollTop = 0;
+  }
   
   export function removeHtmlOverflowYTemporal(): void {
     // let $html = document.querySelector('html') as HTMLHtmlElement;

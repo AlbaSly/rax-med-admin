@@ -1,32 +1,23 @@
 import { AfterViewInit, Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { debounceTime, distinctUntilChanged, filter, fromEvent, tap } from 'rxjs';
 import { IConsultorios } from 'src/app/shared/interfaces';
+import { ConsultoriosService } from '../../services/consultorios.service';
 
 @Component({
   selector: 'app-listado-consultorios',
   templateUrl: './listado-consultorios.component.html',
   styleUrls: ['./listado-consultorios.component.scss']
 })
-export class ListadoConsultoriosComponent implements AfterViewInit {
+export class ListadoConsultoriosComponent {
   @Input() listadoConsultorios: IConsultorios[] = [];
 
   @ViewChild('inputBusqueda') inputBusqueda: ElementRef;
 
-  constructor() {}
+  constructor(
+    private readonly _consultoriosService: ConsultoriosService,
+  ) {}
 
-  ngAfterViewInit(): void {
-    fromEvent(this.inputBusqueda.nativeElement, 'keyup')
-      .pipe(
-        filter(Boolean),
-        debounceTime(250),
-        distinctUntilChanged(),
-        tap((text) => {
-          console.log(this.inputBusqueda.nativeElement.value);
-        }),
-      ).subscribe();
-  }
-
-  limpiarBusqueda(): void {
-    this.inputBusqueda.nativeElement.value = "";
+  busqueda($event: string): void {
+    this._consultoriosService.catalogo($event).subscribe((response) => this.listadoConsultorios = response.data);
   }
 }

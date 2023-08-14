@@ -21,6 +21,9 @@ import { EspecialidadInfoCardComponent } from './components/especialidad-info-ca
     CommonModule,
     EspecialidadesRoutingModule,
     SharedModule,
+  ],
+  exports: [
+    EspecialidadInfoCardComponent,
   ]
 })
 export class EspecialidadesModule { }

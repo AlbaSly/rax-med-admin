@@ -7,6 +7,6 @@ import { Component, Input } from '@angular/core';
 })
 export class DtDdComponent {
   @Input() title: string;
-  @Input() description: string | number | Date | null;
+  @Input() description: string | number | Date | null | unknown;
 
 }

@@ -1,1 +1,16 @@
-<p>paciente-info-card works!</p>
+<div class="animate__animated animate__fadeIn animate__fast my-2 p-2 shadow-md hover:shadow-xl bg-gray-100 hover:bg-white cursor-pointer">
+    <!-- <p class="font-semibold text-gray-500">Persona <span class="text-primaryDarker">{{FormatUtils.formatWithZeros(2, 5)}}</span></p> -->
+    <!-- <p class="font-semibold text-gray-500">ID: <span class="text-primaryDarker">{{especialidad._id}}</span></p> -->
+    <p class="font-semibold text-gray-500">CURP: <span class="text-primaryDarker">{{paciente.usuario.persona.curp}}</span><br><span class="text-gray-400 font-semibold">{{paciente.usuario.email}}</span></p>
+    <div class="md:flex items-center justify-between">
+        <dt class="font-medium text-gray-700">{{APIUtils.getFullName(paciente.usuario.persona)}} <app-estado [estado]="paciente.activo"></app-estado></dt>
+        <app-custom-button
+            (click)="verInfo();"
+            [type]="'button'"
+            [color]="'view'"
+            [title]="'Información'"
+            [size]="'auto'"
+            [extraClasses]="'w-full md:w-auto py-2 my-2'">
+        </app-custom-button>
+    </div>
+</div>

@@ -1,1 +1,10 @@
-<p>medicos-layout works!</p>
+<div class="min-h-screen bg-secondary flex flex-col">
+    
+    <app-private-header></app-private-header>
+    
+    <main class="container flex-grow mx-auto flex justify-center items-center">
+        <div class="w-full md:w-3/4 lg:w-1/2">
+            <router-outlet></router-outlet>
+        </div>
+    </main>
+</div>

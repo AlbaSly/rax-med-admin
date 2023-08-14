@@ -42,3 +42,12 @@ export interface ICrearConsultorio {
     nombre: string;
     notas: string;
 }
+
+export interface IAgregarEspecialidad {
+    cedula: string;
+}
+
+export interface IEditarMedico {
+    horaEntrada: Date;
+    horaSalida: Date;
+}

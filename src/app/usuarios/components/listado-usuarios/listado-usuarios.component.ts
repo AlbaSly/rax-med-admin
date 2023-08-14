@@ -1,33 +1,20 @@
-import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
-import { debounceTime, distinctUntilChanged, filter, fromEvent, tap } from 'rxjs';
+import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { IUsuarios} from 'src/app/shared/interfaces';
+import { UsuariosService } from '../../services/usuarios.service';
 
 @Component({
   selector: 'app-listado-usuarios',
   templateUrl: './listado-usuarios.component.html',
   styleUrls: ['./listado-usuarios.component.scss']
 })
-export class ListadoUsuariosComponent implements AfterViewInit {
+export class ListadoUsuariosComponent {
   @Input() listadoUsuarios: IUsuarios[] = [];
 
-  @ViewChild('inputBusqueda') inputBusqueda: ElementRef;
-
   constructor(
+    private readonly _usuariosService: UsuariosService,
   ) {}
 
-  ngAfterViewInit(): void {
-    fromEvent(this.inputBusqueda.nativeElement, 'keyup')
-      .pipe(
-        filter(Boolean),
-        debounceTime(250),
-        distinctUntilChanged(),
-        tap((text) => {
-          console.log(this.inputBusqueda.nativeElement.value.trim());
-        }),
-      ).subscribe();
-  }
-
-  limpiarBusqueda(): void {
-    this.inputBusqueda.nativeElement.value = "";
+  busqueda($event: string): void {
+    this._usuariosService.catalogo($event).subscribe(response => this.listadoUsuarios = response.data);
   }
 }

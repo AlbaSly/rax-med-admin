@@ -1,0 +1,25 @@
+<app-custom-button
+    (click)="regresar();"
+    [type]="'button'"
+    [color]="'style1'"
+    [title]="'Regresar'"
+    [size]="'auto'"
+    [extraClasses]="'w-full md:w-auto p-1'">
+</app-custom-button>
+
+<app-custom-title 
+    [title]="'Gestionar Especialidades'" 
+    [darkMode]="true" 
+    [classes]="'animate__animated animate__fadeIn'">
+</app-custom-title>
+
+<app-form-wrapper *ngIf="!loading">
+    <form action="">
+        <legend class="text-center font-semibold">{{APIUtils.getFullName(medico.usuario.persona)}}</legend>
+
+        <div class="my-4 gap-x-8 gap-y-6">
+            <p *ngIf="!listadoEspecialidadesMedico.length" class="text-lg text-center text-gray-400 font-medium mx-auto">Sin especialidades.</p>
+            <app-especialidad-info-card *ngFor="let especialidad of listadoEspecialidadesMedico" [especialidad]="especialidad.especialidad"></app-especialidad-info-card>
+        </div>
+    </form>
+</app-form-wrapper>
