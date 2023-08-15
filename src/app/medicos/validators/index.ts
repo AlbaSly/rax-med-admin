@@ -12,4 +12,12 @@ export namespace MedicosValidator {
             Validators.required,
         ]],
     }
+
+    export const AgregarEspecialidad = {
+        [EFormControlNames.CEDULA]: ["", [
+            Validators.minLength(10),
+            Validators.maxLength(10),
+            Validators.required,
+        ]]
+    }
 }

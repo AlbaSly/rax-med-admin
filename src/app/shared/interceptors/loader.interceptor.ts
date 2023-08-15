@@ -16,7 +16,10 @@ export class LoaderInterceptor implements HttpInterceptor {
   ) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    this.loaderService.showLoader();
+    const hideLoader = request.params.has('hideLoader') && request.params.get('hideLoader') === 'true';
+
+    if (!hideLoader) this.loaderService.showLoader();
+    
     return next.handle(request).pipe(finalize(() => {
       return this.loaderService.hideLoader();
     }));

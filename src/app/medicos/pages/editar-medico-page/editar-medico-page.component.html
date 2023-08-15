@@ -1,46 +1,48 @@
-<app-custom-button
-    (click)="regresar();"
-    [type]="'button'"
-    [color]="'style1'"
-    [title]="'Regresar'"
-    [size]="'auto'"
-    [extraClasses]="'w-full md:w-auto p-1 mt-5'">
-</app-custom-button>
+<ng-container *ngIf="!loading">
+    <app-custom-button
+        (click)="regresar();"
+        [type]="'button'"
+        [color]="'style1'"
+        [title]="'Regresar'"
+        [size]="'auto'"
+        [extraClasses]="'md:w-auto p-1 mt-5'">
+    </app-custom-button>
+    
+    <app-custom-title 
+        [title]="'Editar Información del Médico'" 
+        [darkMode]="true" 
+        [classes]="'animate__animated animate__fadeIn'">
+    </app-custom-title>
 
-<app-custom-title 
-    [title]="'Editar Información del Médico'" 
-    [darkMode]="true" 
-    [classes]="'animate__animated animate__fadeIn'">
-</app-custom-title>
-
-<app-form-wrapper *ngIf="!loading">
-    <form (submit)="onSubmit($event);" [formGroup]="editarForm">
-        <legend class="text-center font-semibold">{{APIUtils.getFullName(medico.usuario.persona)}}</legend>
-        <app-input-field
-            [type]="'time'"
-            [for]="FCNames.HORA_ENTRADA"
-            [name]="FCNames.HORA_ENTRADA"
-            [id]="FCNames.HORA_ENTRADA"
-            label="Hora de entrada"
-            [formControlName]="FCNames.HORA_ENTRADA">
-        </app-input-field>
-        <app-input-field
-            [type]="'time'"
-            [for]="FCNames.HORA_SALIDA"
-            [name]="FCNames.HORA_SALIDA"
-            [id]="FCNames.HORA_SALIDA"
-            label="Hora de salida"
-            [formControlName]="FCNames.HORA_SALIDA">
-        </app-input-field>
+    <app-form-wrapper *ngIf="!loading">
+        <form (submit)="onSubmit($event);" [formGroup]="editarForm">
+            <legend class="text-center font-semibold">{{APIUtils.getFullName(medico.usuario.persona)}}</legend>
+            <app-input-field
+                [type]="'time'"
+                [for]="FCNames.HORA_ENTRADA"
+                [name]="FCNames.HORA_ENTRADA"
+                [id]="FCNames.HORA_ENTRADA"
+                label="Hora de entrada"
+                [formControlName]="FCNames.HORA_ENTRADA">
+            </app-input-field>
+            <app-input-field
+                [type]="'time'"
+                [for]="FCNames.HORA_SALIDA"
+                [name]="FCNames.HORA_SALIDA"
+                [id]="FCNames.HORA_SALIDA"
+                label="Hora de salida"
+                [formControlName]="FCNames.HORA_SALIDA">
+            </app-input-field>
 
 
-        <app-custom-button
-            [type]="'submit'"
-            [color]="'style1'"
-            [size]="'full'"
-            [disabled]="!editarForm.valid"
-            [extraClasses]="'mx-auto mt-5'"
-            [title]="'Actualizar'">
-        </app-custom-button>
-    </form>
-</app-form-wrapper>
+            <app-custom-button
+                [type]="'submit'"
+                [color]="'style1'"
+                [size]="'full'"
+                [disabled]="!editarForm.valid"
+                [extraClasses]="'mx-auto mt-5'"
+                [title]="'Actualizar'">
+            </app-custom-button>
+        </form>
+    </app-form-wrapper>
+</ng-container>

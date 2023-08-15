@@ -13,15 +13,15 @@ export class LoaderService {
 
   showLoader() {
     if (this.apiCount === 0) {
-      this.isLoadingSubject.next(true);
+      return this.isLoadingSubject.next(true);
     }
     this.apiCount++;
   }
 
   hideLoader() {
-    this.apiCount--;
     if (this.apiCount === 0) {
-      this.isLoadingSubject.next(false);
+      return this.isLoadingSubject.next(false);
     }
+    this.apiCount--;
   }
 }

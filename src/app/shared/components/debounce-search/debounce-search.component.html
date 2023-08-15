@@ -7,9 +7,9 @@
         class="flex-grow px-2 font-medium text-primaryDarker outline-none" 
         #inputBusqueda>
     <app-custom-button
-        (click)="limpiarBusqueda();"
-        [type]="'button'"
+        (click)="limpiarBusqueda($event);"
+        type="button"
         [color]="'style2'"
-        [title]="'Limpiar Búsqueda'">
+        [title]="'Limpiar'">
     </app-custom-button>
 </div>

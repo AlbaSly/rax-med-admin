@@ -31,6 +31,12 @@ export class MedicosService {
     return this.http.post<IResolveResponse<null>>(url, data);
   }
 
+  modificarEstadoEspecialidad(idMedicoEspecialidad: string): Observable<IResolveResponse<null>> {
+    const url: string = `${this.PATH}/modificar-estado-especialidad/${idMedicoEspecialidad}`;
+
+    return this.http.put<IResolveResponse<null>>(url, {});
+  }
+
   listadoEspecialidades(idMedico: string) {
     const url: string = `${this.PATH}/listado-especialidades/${idMedico}`;
 

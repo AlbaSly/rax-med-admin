@@ -13,7 +13,7 @@ export class CustomButtonComponent implements OnInit {
   @Input() title: string = "Hello, World!";
 
   @Input() disabled: boolean = false;
-  @Output('click') click: EventEmitter<void> = new EventEmitter<void>();
+  @Output('click') click: EventEmitter<Event> = new EventEmitter<Event>();
 
   @Input() extraClasses: string = "";
 

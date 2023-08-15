@@ -19,10 +19,12 @@ export class EspecialidadesService {
     return this.http.post<IResolveResponse<null>>(url, data);
   }
 
-  catalogo(busqueda?: string): Observable<IResolveResponse<IEspecialidades[]>> {
+  catalogo(busqueda?: string, hideLoader: boolean = false): Observable<IResolveResponse<IEspecialidades[]>> {
     const url: string = `${this.PATH}/catalogo`;
 
-    const queryParams = new HttpParams().append('busqueda', busqueda ?? "");
+    const queryParams = new HttpParams()
+      .append('busqueda', busqueda ?? "")
+      .append('hideLoader', hideLoader);
     return this.http.get<IResolveResponse<IEspecialidades[]>>(url, {params: queryParams});
   }
 }

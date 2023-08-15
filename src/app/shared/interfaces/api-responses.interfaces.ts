@@ -62,4 +62,7 @@ export interface IConsultorios extends MongoDocument {
 export interface IMedicosEspecialidades extends MongoDocument {
     medico: IMedicos | number;
     especialidad: IEspecialidades;
+    consultorio: IConsultorios;
+    cedula: string;
+    activo: boolean;
 }

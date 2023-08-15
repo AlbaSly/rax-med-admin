@@ -1,25 +1,117 @@
-<app-custom-button
-    (click)="regresar();"
-    [type]="'button'"
-    [color]="'style1'"
-    [title]="'Regresar'"
-    [size]="'auto'"
-    [extraClasses]="'w-full md:w-auto p-1'">
-</app-custom-button>
+<ng-container *ngIf="!loading">
+    <app-custom-button
+        (click)="regresar();"
+        [type]="'button'"
+        [color]="'style1'"
+        [title]="'Regresar'"
+        [size]="'auto'"
+        [extraClasses]="'md:w-auto p-1 mt-5'">
+    </app-custom-button>
 
-<app-custom-title 
-    [title]="'Gestionar Especialidades'" 
-    [darkMode]="true" 
-    [classes]="'animate__animated animate__fadeIn'">
-</app-custom-title>
+    <app-custom-title 
+        [title]="'Gestionar Especialidades'" 
+        [darkMode]="true" 
+        [classes]="'animate__animated animate__fadeIn'">
+    </app-custom-title>
 
-<app-form-wrapper *ngIf="!loading">
-    <form action="">
-        <legend class="text-center font-semibold">{{APIUtils.getFullName(medico.usuario.persona)}}</legend>
+    <app-form-wrapper>
+        <h2 class="text-center font-semibold">{{APIUtils.getFullName(medico.usuario.persona)}}</h2>
 
         <div class="my-4 gap-x-8 gap-y-6">
             <p *ngIf="!listadoEspecialidadesMedico.length" class="text-lg text-center text-gray-400 font-medium mx-auto">Sin especialidades.</p>
-            <app-especialidad-info-card *ngFor="let especialidad of listadoEspecialidadesMedico" [especialidad]="especialidad.especialidad"></app-especialidad-info-card>
+
+            <div 
+                *ngFor="let especialidad of listadoEspecialidadesMedico"
+                class="animate__animated animate__fadeIn animate__fast w-full my-2 p-2 shadow-md hover:shadow-xl bg-gray-100 hover:bg-white cursor-pointer flex justify-between items-center"
+                >
+                <div>
+                    <p class="font-semibold text-gray-700">{{especialidad.especialidad.nombre}} <app-estado [estado]="especialidad.activo"></app-estado></p>
+                    <p class="font-medium text-gray-400">Cédula: <span>{{especialidad.cedula}}</span></p>
+                    <p class="font-medium text-gray-500">Consultorio: <span class="text-gray-700">{{especialidad.consultorio.nombre}}</span></p>
+                </div>
+                <app-custom-button
+                    (click)="modificarEstadoEspecialidad(especialidad)"
+                    [color]="especialidad.activo ? 'delete' : 'new'"
+                    [title]="especialidad.activo ? 'Desactivar' : 'Activar'">
+                </app-custom-button>
+            </div>
         </div>
-    </form>
-</app-form-wrapper>
+
+        <app-line-breaker></app-line-breaker>
+
+        <app-custom-title 
+            [type]="'h2'"
+            [title]="'Agregar Especialidad'" 
+            [darkMode]="false" 
+            [classes]="'animate__animated animate__fadeIn my-4'">
+        </app-custom-title>
+
+        <form (submit)="onSubmit($event);" [formGroup]="agregarEspecialidadForm">
+            <fieldset>
+                <legend class="text-center font-semibold uppercase">Elegir Especialidad</legend>
+            
+                <div class="bg-gray-200 p-4">
+                    <ng-container>
+                        <app-debounce-search (search)="busquedaEspecialidad($event);"></app-debounce-search>
+                    </ng-container>
+                    <button 
+                        *ngFor="let especialidad of listadoEspecialidades"
+                        type="button"
+                        (click)="seleccionarEspecialidad(especialidad)"
+                        class="animate__animated animate__fadeIn animate__fast block w-full my-2 p-2 shadow-md hover:shadow-xl bg-gray-100 hover:bg-white cursor-pointer border-4 border-transparent"
+                        [ngClass]="{'border-green-500': especialidad._id === especialidadSeleccionada}">
+                        <p class="font-semibold text-gray-700">{{especialidad.nombre}}</p>
+                    </button>
+                </div>
+            </fieldset>
+
+            <br>
+
+            <fieldset>
+                <legend class="text-center font-semibold uppercase">Elegir Consultorio</legend>
+                <div class="bg-gray-200 p-4">
+                    <ng-container>
+                        <app-debounce-search (search)="busquedaConsultorio($event);"></app-debounce-search>
+                    </ng-container>
+                    <button 
+                        *ngFor="let consultorio of listadoConsultorios"
+                        type="button"
+                        (click)="seleccionarConsultorio(consultorio)"
+                        class="animate__animated animate__fadeIn animate__fast block w-full my-2 p-2 shadow-md hover:shadow-xl bg-gray-100 hover:bg-white cursor-pointer border-4 border-transparent"
+                        [ngClass]="{'border-green-500': consultorio._id === consultorioSeleccionado}">
+                        <p class="font-semibold text-gray-700">{{consultorio.nombre}}</p>
+                    </button>
+                </div>
+            </fieldset>
+
+            <br>
+
+            <fieldset>
+                <legend class="text-center font-semibold uppercase">Datos</legend>
+
+                <app-input-field
+                    [type]="'text'"
+                    [for]="FCNames.CEDULA"
+                    [name]="FCNames.CEDULA"
+                    [id]="FCNames.CEDULA"
+                    label="Cédula Profesional"
+                    placeholder="Cédula"
+                    [length]="10"
+                    [formControlName]="FCNames.CEDULA">
+                </app-input-field>
+            </fieldset>
+
+
+            <app-custom-button
+                type="submit"
+                title="Agregar"
+                color="style1"
+                size="full"
+                extraClasses="mt-4 mx-auto"
+                [disabled]="!isValidForm()"
+
+                class="w-full md:w-auto block md:mx-auto">
+            </app-custom-button>
+        </form>
+    </app-form-wrapper>
+</ng-container>

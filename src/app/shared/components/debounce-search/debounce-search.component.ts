@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { debounceTime, distinctUntilChanged, filter, fromEvent, tap } from 'rxjs';
 
 @Component({
@@ -26,7 +26,9 @@ export class DebounceSearchComponent implements AfterViewInit{
       ).subscribe()
   }
 
-  limpiarBusqueda(): void {
+  limpiarBusqueda($event: Event): void {
+    $event.preventDefault();
+    
     this.inputBusqueda.nativeElement.value = "";
     this.search.emit("");
   }
